@@ -1,7 +1,7 @@
 %Determine if a list has an even numbers of elements without counting the elements from the list
-%even(L:list,R:0-if even no of elems, 1-otherwise)
-%(i,o)
+%even(L:list)
+%(i)
 
-even([],0).
-even([_],1).
-even([_|[_|T]],R):-even(T,R). 
+even([]):-true.
+even([_]):-false.
+even([_|[_|T]]):-even(T).
