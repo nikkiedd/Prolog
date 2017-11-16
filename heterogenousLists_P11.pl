@@ -11,7 +11,7 @@ to replace this value in sublists with the maximum value of sublist.
 replace(_,_,[],[]).
 replace(N,E,[H|T],[H|TR]) :- H =\= N,
     						 replace(N,E,T,TR).
-replace(N,E,[H|T],[E|TR]) :- H =:=N,
+replace(N,E,[H|T],[E|TR]) :- H =:= N,
     						 replace(N,E,T,TR).
 
 
@@ -36,14 +36,14 @@ max1([H|T],M,Max)	:-  is_list(H),
     					max1(T,M,Max).
 
 %replace the max value in sublist with the maximum value of sublist
-big_wrap(L,R)			:-  replace_wrap(L,L,R).	%THIS IS THE MAIN FUNCTION
-replace_wrap(L, C, R) 	:- 	max_wrap(L,M),
-    			   			replace1(L,M,C,R). %M is the max elem in the big list
-replace1([],_,R,R).
-replace1([H|T], M, [H|TR], R)	:-	not(is_list(H)),
-    								replace1(T,M,TR,R).
-replace1([H|T], M, [H|TR], R)	:-	is_list(H),
+big_wrap([],[]).
+big_wrap(L,R)			:-  replace_wrap(L,R).	%THIS IS THE MAIN FUNCTION
+replace_wrap(L, R) 	:- 	max_wrap(L,M),
+    			   		replace1(L,M,R). %M is the max elem in the big list
+replace1([],_,[]).
+replace1([H|T], M, [H|TR])	:-	not(is_list(H)),
+    								replace1(T,M,TR).
+replace1([H|T], M, [F|TR])	:-	is_list(H),
     								max_wrap(H, M1), %M1 is the max elem in the sublist H
-    								replace(M1, M, T, F),
-    								TR is F,
-    								replace1(T,M,TR,R).
+    								replace(M, M1, H, F),
+    								replace1(T,M,TR).
