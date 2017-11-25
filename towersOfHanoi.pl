@@ -1,4 +1,4 @@
-%hanoi(N: natural number, From: String,To: String,Aux: String)
+%hanoi(N: natural number, From: string,To: string,Aux: string)
 %hanoi(i,i,i,i) - this predicate helps us solve the Towers of Hanoi problem step by step
 
 hanoi(N,From,To,_):- N=:=1,	%if there's only one disk, we move it from the starting to the destination rod
