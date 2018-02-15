@@ -1,4 +1,4 @@
-%Describe a DFA that checks whether a given natural number X contains an even number of zeroes in its binary representation.
+%Describe a DFA(Deterministic Finite Automaton) that checks whether a given natural number X contains an even number of zeroes in its binary representation.
 
 %alphabet={0,1}
 %states={S1,S2}
